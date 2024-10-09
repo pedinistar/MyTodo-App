@@ -1,0 +1,174 @@
+/* Background for the entire page */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    padding-bottom: 40px; /* Prevent footer overlap */
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #343a40;
+    padding: 1rem 2rem; /* Normalize Navbar Height */
+}
+
+.navbar-brand {
+    font-family: 'Lora', serif;
+    font-weight: 600;
+    font-size: 1.5rem; /* Adjust if necessary */
+    color: #f8f9fa !important;
+}
+
+.nav-link {
+    color: #f8f9fa !important;
+    font-weight: 500;
+    font-size: 1rem; /* Ensure uniform font size for links */
+    padding: 8px 15px; /* Adjust the padding for smaller navbar */
+}
+
+.nav-link.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.nav-link:hover {
+    color: #ffc107 !important;
+    text-decoration: underline; /* Add underline on hover */
+}
+
+/* Navbar Toggler Icon */
+.navbar-toggler {
+    padding: 5px 10px; /* Fixing Navbar Height Consistency */
+}
+
+.navbar-toggler-icon {
+    color: #ffffff;
+}
+
+/* Search Bar */
+.navbar .form-inline {
+    margin-left: auto; /* Align search bar to the right */
+}
+
+/* Button Styling */
+.btn-dark {
+    background-color: #343a40;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-dark:hover {
+    background-color: #ffc107;
+    color: #343a40;
+}
+
+.btn-outline-light {
+    color: #f0ad4e;
+    border-color: #f0ad4e;
+}
+
+.btn-outline-light:hover {
+    background-color: #f0ad4e;
+    color: #ffffff;
+}
+
+/* Form Control */
+.form-control {
+    border-radius: 30px;
+    padding: 0.75rem 1rem;
+}
+
+/* Todo Description Column */
+.todo-desc {
+    max-width: 100%;
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: normal; /* Allow multiple lines */
+}
+
+@media (min-width: 768px) {
+    .todo-desc {
+        max-width: 300px; /* Adjust this width as needed for larger screens */
+    }
+}
+
+/* Main Content Container */
+.content-container {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+/* Todo Item Animations */
+.todo-item {
+    opacity: 0;
+    transition: opacity 0.5s ease-in;
+}
+
+.todo-item.show {
+    opacity: 1;
+}
+
+.todo-item.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+}
+
+/* Footer Styling */
+footer {
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 1rem 0;
+    text-align: center;
+    margin-top: 40px;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* Login and Signup Links */
+.login-signup-link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.login-signup-link a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Link Styles */
+.auth-link {
+    color: #343a40;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.auth-link:hover {
+    color: #ffc107;
+    text-decoration: underline;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Button Hover Effect */
+a, .nav-link {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+a:hover, .nav-link:hover {
+    color: #ffc107;
+    text-decoration: underline;
+}
+
