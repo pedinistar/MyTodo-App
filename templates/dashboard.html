@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Dashboard
+{% endblock title %}
+
+{% block body %}
+
+<!-- Flash Messages Section -->
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <div class="container">
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show slide-in" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endwith %}
+
+<!-- Add Todo Section -->
+<div class="container my-3 fade-in">
+    <h2 class="mb-4">Add a New Todo</h2>
+    {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+    {% endif %}
+    
+    <form action="/dashboard" method="POST">
+        <div class="mb-3">
+            <label for="title" class="form-label">Todo Title</label>
+            <input type="text" class="form-control" name="title" id="title" placeholder="Add todo...">
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Todo Description</label>
+            <textarea class="form-control" name="desc" id="desc" rows="3" placeholder="Add description..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Add Todo</button>
+    </form>
+</div>
+
+<!-- Todo List Section with Table Animation -->
+<div class="container my-3">
+    <h2 class="mb-4">Your Todos</h2>
+    
+    {% if search_query %}
+        <p>Showing results for: <strong>{{ search_query }}</strong></p>
+        {% if no_result %}
+            <div class="alert alert-warning" role="alert">
+                No todo found for "{{ search_query }}".
+            </div>
+        {% else %}
+            <table class="table animated-table">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in allTodo %}
+                    <tr class="fade-in-row">
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ todo.title }}</td>
+                        <td>{{ todo.desc }}</td>
+                        <td>{{ todo.date_created }}</td>
+                        <td>
+                            <a href="/update/{{ todo.sno }}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+                            <a href="/delete/{{ todo.sno }}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% else %}
+        {% if allTodo|length == 0 %}
+            <div class="alert alert-dark" role="alert">
+                No Todos found. Add your first Todo now!
+            </div>
+        {% else %}
+            <table class="table animated-table">
+                <thead>
+                    <tr>
+                        <th scope="col">SNo</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Time</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for todo in allTodo %}
+                    <tr class="fade-in-row">
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ todo.title }}</td>
+                        <td>{{ todo.desc }}</td>
+                        <td>{{ todo.date_created }}</td>
+                        <td>
+                            <a href="/update/{{ todo.sno }}" type="button" class="btn btn-outline-dark btn-sm mx-1">Update</a>
+                            <a href="/delete/{{ todo.sno }}" type="button" class="btn btn-outline-dark btn-sm mx-1">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    {% endif %}
+</div>
+
+<!-- JavaScript for Animations -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Apply delay for table rows to fade in one by one
+        const rows = document.querySelectorAll(".fade-in-row");
+        rows.forEach((row, index) => {
+            setTimeout(() => {
+                row.classList.add("show");
+            }, index * 100); // Adjust the delay for each row (100ms)
+        });
+    });
+</script>
+
+<!-- Custom CSS for Animations -->
+<style>
+    /* Flash messages slide-in animation */
+    @keyframes slideIn {
+        from {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+        to {
+            transform: translateX(0);
+            opacity: 1;
+        }
+    }
+
+    .slide-in {
+        animation: slideIn 0.5s ease forwards;
+    }
+
+    /* Fade-in effect for form and elements */
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.6s ease forwards;
+    }
+
+    /* Fade-in effect for table rows */
+    .fade-in-row {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .fade-in-row.show {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* Hover effect for table rows */
+    .animated-table tbody tr:hover {
+        background-color: #f1f1f1;
+        transform: scale(1.02);
+        transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    /* Keyframes for fade-in animation */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+</style>
+
+{% endblock body %}
+

@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5" style="font-family: 'Poppins', sans-serif;">
+    <!-- Welcome Section -->
+    <div class="text-center mb-5">
+        <h1 class="appear-text" style="font-family: 'Lora', serif; font-weight: 700; color: #343a40;">Welcome to MyTodo</h1>
+        <p class="lead appear-text" style="color: #6c757d; font-size: 1.2rem;">Simplify task management and enhance your productivity with our intuitive platform.</p>
+    </div>
+
+    <!-- Features Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-4 mb-4 appear-text">
+            <i class="fas fa-tasks fa-3x mb-3" style="color: #343a40;"></i>
+            <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">Easy Task Management</h3>
+            <p style="color: #6c757d;">Effortlessly create, update, and manage your to-dos with just a few clicks.</p>
+        </div>
+        <div class="col-md-4 mb-4 appear-text">
+            <i class="fas fa-calendar-alt fa-3x mb-3" style="color: #343a40;"></i>
+            <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">Track Deadlines</h3>
+            <p style="color: #6c757d;">Stay on track with reminders and never miss an important deadline.</p>
+        </div>
+        <div class="col-md-4 mb-4 appear-text">
+            <i class="fas fa-chart-line fa-3x mb-3" style="color: #343a40;"></i>
+            <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">Boost Productivity</h3>
+            <p style="color: #6c757d;">Achieve more by focusing on your most important tasks every day.</p>
+        </div>
+    </div>
+
+    <!-- Why Choose Us Section -->
+    <div class="text-center my-5 appear-text">
+        <h2 style="font-family: 'Lora', serif; font-weight: 700; color: #343a40;">Why Choose MyTodo?</h2>
+        <p class="lead" style="color: #6c757d; font-size: 1.2rem;">We simplify task management so you can focus on what matters most, with a sleek and user-friendly interface.</p>
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="text-center mt-5 appear-text">
+        <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">Ready to Get Organized?</h3>
+        <p style="color: #6c757d; font-size: 1.1rem;">Join a growing community of users who rely on MyTodo for efficient task management.</p>
+        <a href="/register" class="btn btn-primary btn-lg mt-4 px-4 py-2" style="border-radius: 50px; transition: transform 0.3s;">Get Started</a>
+    </div>  
+</div>
+<!-- JavaScript to sequentially reveal text -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const texts = document.querySelectorAll(".appear-text");
+        texts.forEach((text, index) => {
+            setTimeout(() => {
+                text.classList.add("show");
+            }, index * 500); // Adjust the time delay between each item here (500ms for example)
+        });
+    });
+</script>
+
+<!-- Custom CSS -->
+<style>
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Initially hide text */
+    .appear-text {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    /* Show text with animation */
+    .appear-text.show {
+        opacity: 1;
+        animation: fadeIn 0.5s ease forwards;
+    }
+    /* Button Hover Effect */
+    .btn-primary:hover {
+        background-color: #0056b3;
+        transform: translateY(-3px); /* Slight upward movement on hover */
+    }
+</style>
+{% endblock body %}

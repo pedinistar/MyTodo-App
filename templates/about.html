@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}
+About
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5" style="font-family: 'Poppins', sans-serif;">
+    <!-- About Us Section -->
+    <div class="text-center mb-5">
+        <h1 class="appear-text" style="font-family: 'Lora', serif; font-weight: 700; color: #343a40;">About MyTodo</h1>
+        <p class="lead appear-text" style="color: #6c757d; font-size: 1.2rem;">MyTodo is designed to simplify the way you manage your tasks. Our mission is to help you become more organized and productive.</p>
+    </div>
+
+    <!-- Our Mission Section -->
+    <div class="row text-center mb-5">
+        <div class="col-md-6 mb-4 appear-text">
+            <i class="fas fa-bullseye fa-3x mb-3" style="color: #343a40;"></i>
+            <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">
+                <i class="bi bi-bullseye"></i> Our Mission
+            </h3>
+            <p style="color: #6c757d;">MyTodo is designed to help you stay organized and manage your tasks with ease. Whether you're juggling multiple projects or simply need a way to keep track of personal to-dos, this application offers flexibility and simplicity to get things done efficiently.</p>
+        </div>
+        <div class="col-md-6 mb-4 appear-text">
+            <i class="fas fa-lightbulb fa-3x mb-3" style="color: #343a40;"></i>
+            <h3 style="font-family: 'Lora', serif; font-weight: 600; color: #343a40;">
+                <i class="bi bi-lightbulb"></i> Features
+            </h3>
+            <ul style="color: #495057;">
+                <i class="bi bi-plus-circle"></i> Effortlessly Add, Update, and Delete tasks.<br>
+                <i class="bi bi-calendar-check"></i> Organize your tasks by priority and deadline.<br>
+                <i class="bi bi-clock-history"></i> Track your task creation dates for better time management.<br>
+                <i class="bi bi-phone"></i> Fully responsive design with Bootstrap for mobile and desktop use.<br>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Team Section -->
+    <div class="text-center my-5 appear-text">
+        <h3 style="font-family: 'Lora', serif; font-weight: 700; color: #343a40;">
+            <i class="bi bi-gear"></i> Technologies Used
+        </h3>
+        <ul class="lead" style="color: #495057; font-size:1.2rem;">
+            <i class="bi bi-stack"></i> Flask - Backend framework for rapid development<br>
+            <i class="bi bi-hdd"></i> SQLite - Lightweight database for fast storage<br>
+            <i class="bi bi-code-slash"></i> HTML, CSS, Bootstrap - Modern frontend technologies<br>
+            <i class="bi bi-database"></i> SQLAlchemy - ORM for easy database management<br>
+        </ul>
+    </div>
+</div>
+
+<!-- JavaScript to sequentially reveal text -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const texts = document.querySelectorAll(".appear-text");
+        texts.forEach((text, index) => {
+            setTimeout(() => {
+                text.classList.add("show");
+            }, index * 500); // Adjust the time delay between each item here (500ms for example)
+        });
+    });
+</script>
+
+<!-- Custom CSS -->
+<style>
+    /* Fade-in Animation */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Initially hide text */
+    .appear-text {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    /* Show text with animation */
+    .appear-text.show {
+        opacity: 1;
+        animation: fadeIn 0.5s ease forwards;
+    }
+    .bi {
+        color: #035bb8;
+        font-size: 1.3rem;
+    }
+</style>
+{% endblock body %}
+
+
+
+
+

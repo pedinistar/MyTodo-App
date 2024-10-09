@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Contact
+{% endblock title %}
+
+{% block body %}
+<div class="container my-5" style="font-family: 'Poppins', sans-serif;">
+    <!-- Developer Section with Fade-in Animation -->
+    <div class="row mt-5 text-center fade-in">
+        <div class="col-md-12">
+            <h3 style="font-family: 'Lora', serif; font-weight: 700; color: #343a40;">
+                <i class="bi bi-person-circle"></i> Meet the Developer
+            </h3>
+            <p class="lead" style="color: #6c757d;">
+                Hi, I'm Surbhi Verma, the developer behind MyTodo. I am passionate about building solutions that are both elegant and functional. 
+                Interested in collaborating or have any questions? Feel free to reach out!
+            </p>
+        </div>
+    </div>
+
+    <!-- Contact Section with Icons and Animation -->
+    <div class="row justify-content-center mt-4 fade-in">
+        <div class="col-md-6 text-center">
+            <h4 style="font-family: 'Lora', serif; font-weight: 600;">Connect with Me</h4>
+            <div class="social-icons mt-3">
+                <a href="https://github.com/YuiSurbhi" target="_blank" class="text-dark mx-3" aria-label="GitHub">
+                    <i class="bi bi-github social-icon"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/surbhi-verma-a63881295/" target="_blank" class="mx-3" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin social-icon" style="color: #0077b5;"></i>
+                </a>
+                <a href="mailto:s24184410@gmail.com" target="_blank" class="mx-3" aria-label="Email">
+                    <i class="bi bi-envelope-fill social-icon" style="color: #db4437;"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section with Fade-in Animation -->
+    <div class="row mt-5 fade-in">
+        <div class="col-md-12 text-center">
+            <p class="text-muted">
+                &copy; 2024 Surbhi Verma | All Rights Reserved
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Custom CSS for Animations -->
+<style>
+    /* Fade-in animation */
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 0.6s ease forwards;
+    }
+
+    /* Keyframes for fade-in */
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Social icon hover animation */
+    .social-icon {
+        font-size: 2rem;
+        transition: transform 0.3s ease, color 0.3s ease; /* Smooth animation for growth */
+    }
+
+    .social-icon:hover {
+        transform: scale(1.2); /* Slightly enlarges the icon */
+        color: #0056b3; /* Change color on hover */
+    }
+
+    /* Developer Section Icon */
+    .bi-person-circle {
+        color: #232424;
+    }
+</style>
+
+<!-- JavaScript for Sequential Animations (Optional) -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fadeInElements = document.querySelectorAll('.fade-in');
+        fadeInElements.forEach((el, index) => {
+            setTimeout(() => {
+                el.classList.add('show');
+            }, index * 200); // Adds delay for fade-in effect (200ms between each section)
+        });
+    });
+</script>
+{% endblock body %}
