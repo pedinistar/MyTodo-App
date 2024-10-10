@@ -7,6 +7,10 @@ from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask_migrate import Migrate
+
+migrate = Migrate(app, db)
+
 
 app = Flask(__name__)
 app.instance_path = "/tmp"
