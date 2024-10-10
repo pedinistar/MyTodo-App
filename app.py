@@ -18,6 +18,7 @@ os.makedirs(app.instance_path, exist_ok=True)
 
 # User Model
 class User(UserMixin, db.Model):
+    _tablename_="user"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)  # Make sure this column exists
