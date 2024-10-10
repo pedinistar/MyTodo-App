@@ -7,6 +7,9 @@ from wtforms.validators import DataRequired, Length, EqualTo, ValidationError
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
+from flask_migrate import Migrate
+
+
 
 app = Flask(__name__)
 app.instance_path = "/tmp"
@@ -15,6 +18,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'  # For session management
 db = SQLAlchemy(app)
 os.makedirs(app.instance_path, exist_ok=True)
+migrate = Migrate(app, db)
 
 # User Model
 class User(UserMixin, db.Model):
@@ -188,11 +192,9 @@ def about():
 def contact():
     return render_template('contact.html')
 
-@app.before_first_request
-def create_tables():
-    db.create_all()
-
-if __name__ == "__main__":
-    app.run(debug=True, port=8000)
+if __name__=="__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True,port = 8000)     
 
 
