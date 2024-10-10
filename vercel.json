@@ -13,8 +13,5 @@
   ],
   "env": {
     "FLASK_APP": "app.py"
-  },
-  "hooks": {
-    "build": "flask db upgrade"
   }
 }

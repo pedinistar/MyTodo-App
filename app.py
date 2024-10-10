@@ -12,7 +12,7 @@ from flask_migrate import Migrate
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///./todo.db"
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///todo.db"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key'  # For session management
 db = SQLAlchemy(app)
@@ -20,7 +20,7 @@ migrate = Migrate(app, db)
 
 # User Model
 class User(UserMixin, db.Model):
-    _tablename_="user"
+    __tablename__="users"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), unique=True, nullable=False)
     password = db.Column(db.String(100), nullable=False)  # Make sure this column exists
